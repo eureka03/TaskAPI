@@ -3,29 +3,31 @@ package com.example.TaskAPI.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.UUID;
+
 @Entity
 public class Task {
 
     @Id
-    private String Id;
+    private UUID Id;
     private String title;
-    private String completed;
+    private boolean completed;
 
     public Task(){
 
     }
 
-    public Task(String id, String title, String completed) {
+    public Task(UUID id, String title, boolean completed) {
         this.Id = id;
         this.title = title;
         this.completed = completed;
     }
 
-    public String getId() {
+    public UUID getId() {
         return Id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.Id = id;
     }
     public String getTitle() {
@@ -34,10 +36,10 @@ public class Task {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
-    public void setCompleted(String completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 }

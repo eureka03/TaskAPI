@@ -1,7 +1,10 @@
 package com.example.TaskAPI.controller;
 
+
+import com.example.TaskAPI.dto.TaskRequest;
 import com.example.TaskAPI.entity.Task;
 import com.example.TaskAPI.service.TaskService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,15 +22,15 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("api/tasks")
+    @GetMapping("/api/tasks")
     public ResponseEntity<List<Task>> getAllTasks(){
-
-        return ResponseEntity.status(200).body(taskService.getAllTasks());
+        return ResponseEntity.status(HttpStatus.OK).body(taskService.getAllTasks());
 
     }
 
-    @PostMapping("api/tasks")
-    public ResponseEntity<Task> createTask(@RequestBody Task task){
-        return ResponseEntity.status(201).body(taskService.addTask(task));
+    @PostMapping("/api/tasks")
+    public ResponseEntity<Task> createTask(@RequestBody TaskRequest taskRequest){
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.addTask(taskRequest));
     }
+
 }
