@@ -1,7 +1,11 @@
 package com.example.TaskAPI.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 // Object used to deserialize the request body for creating a new task
 public class TaskRequest {
+
+    @NotBlank
     private String title;
     private boolean completed;
 

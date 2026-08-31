@@ -4,6 +4,7 @@ package com.example.TaskAPI.controller;
 import com.example.TaskAPI.dto.TaskRequest;
 import com.example.TaskAPI.entity.Task;
 import com.example.TaskAPI.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class TaskController {
     }
 
     @PostMapping("/api/tasks")
-    public ResponseEntity<Task> createTask(@RequestBody TaskRequest taskRequest){
+    public ResponseEntity<Task> createTask(@Valid  @RequestBody TaskRequest taskRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.addTask(taskRequest));
     }
 
