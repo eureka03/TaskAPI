@@ -1,11 +1,13 @@
 package com.example.TaskAPI.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 // Object used to deserialize the request body for creating a new task
 public class TaskRequest {
 
-    @NotBlank
+    @NotBlank(message="Title is required")
+    @Size(min=3 , max =100 , message = "Title must be between 3 and 100 characters")
     private String title;
     private boolean completed;
 
