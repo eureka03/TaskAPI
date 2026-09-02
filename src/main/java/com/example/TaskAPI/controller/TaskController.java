@@ -7,12 +7,11 @@ import com.example.TaskAPI.service.TaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class TaskController {
@@ -33,5 +32,34 @@ public class TaskController {
     public ResponseEntity<Task> createTask(@Valid  @RequestBody TaskRequest taskRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.addTask(taskRequest));
     }
+
+   @GetMapping("/api/tasks/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable UUID id){
+        Task task = taskService.getTaskById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(task);
+   }
+
+   @PutMapping("/api/tasks/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable UUID id, @Valid  @RequestBody TaskRequest taskRequest){
+
+        Task updatedTask = taskService.updateTask(id, taskRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedTask);
+
+   }
+
+   @PatchMapping("/api/tasks/{id}")
+   public ResponseEntity<Task> updateTaskPartial(@PathVariable UUID id , @RequestBody TaskRequest taskRequest){
+
+   }
+
+   @DeleteMapping("/api/tasks/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable UUID id){
+
+        taskService.deleteTask(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+   }
+
+
 
 }
