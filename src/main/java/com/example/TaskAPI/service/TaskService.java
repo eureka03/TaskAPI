@@ -55,10 +55,6 @@ public class TaskService {
 
     }
 
-    public Task updateTaskPartial(UUID id , TaskRequest taskRequest){
-        Task task = taskRepository.findById(id)
-                .orElseThrow(()-> new TaskNotFoundException(id));
 
-    }
 
 }
