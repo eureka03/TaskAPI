@@ -47,10 +47,10 @@ public class TaskController {
 
    }
 
-   @PatchMapping("/api/tasks/{id}")
+  /* @PatchMapping("/api/tasks/{id}")
    public ResponseEntity<Task> updateTaskPartial(@PathVariable UUID id , @RequestBody TaskRequest taskRequest){
 
-   }
+   }*/
 
    @DeleteMapping("/api/tasks/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable UUID id){
