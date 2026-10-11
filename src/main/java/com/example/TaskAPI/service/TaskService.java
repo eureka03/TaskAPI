@@ -25,8 +25,9 @@ public class TaskService {
 
         Task newTask = new Task();
         newTask.setId(java.util.UUID.randomUUID());
-        newTask.setTitle(taskrequest.getTitle());
+        newTask.setName(taskrequest.getName());
         newTask.setCompleted(taskrequest.isCompleted());
+        newTask.setPriority(taskrequest.getPriority());
 
         return taskRepository.save(newTask);
 
@@ -42,7 +43,7 @@ public class TaskService {
         Task task = taskRepository.findById(id)
                 .orElseThrow(()-> new TaskNotFoundException(id));
 
-        task.setTitle(taskRequest.getTitle());
+        task.setName(taskRequest.getName());
         task.setCompleted(taskRequest.isCompleted());
 
         return taskRepository.save(task);

@@ -1,6 +1,8 @@
 package com.example.TaskAPI.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.UUID;
@@ -9,37 +11,46 @@ import java.util.UUID;
 public class Task {
 
     @Id
-    private UUID Id;
-    private String title;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    private String name;
     private boolean completed;
+    private String priority;
 
     public Task(){
 
     }
 
-    public Task(UUID id, String title, boolean completed) {
+    public Task(Long id, String title, boolean completed) {
         this.Id = id;
-        this.title = title;
+        this.name = name;
         this.completed = completed;
+        this.priority = priority;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.Id = id;
     }
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
     public boolean getCompleted() {
         return completed;
     }
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+    public void setPriority(String priority){
+        this.priority = priority;
+    }
+    public String getPriority(){
+        return priority;
     }
 }
