@@ -8,11 +8,6 @@ public class TaskPatchRequest {
     public TaskPatchRequest() {
     }
 
-    public TaskPatchRequest(String title, Boolean completed) {
-        this.title = title;
-        this.completed = completed;
-    }
-
     public String getTitle() {
         return title;
     }
