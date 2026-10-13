@@ -22,7 +22,7 @@ public class RegisterRequestDto {
     public String getUserEmail(){
         return userEmail;
     }
-    public String setPassword(){
+    public void setPassword(String password){
         this.password = password;
     }
 
