@@ -11,23 +11,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String username;
+    private String password;
     private String userEmail;
 
     public User(){
 
     }
 
-    public User(Long userId , String username , String userEmail){
+    public User(Long userId , String password , String userEmail){
         this.userId = userId;
         this.userEmail = userEmail;
-        this.username = username;
+        this.password = password;
     }
-    public void setUsername(String username){
-        this.username = username;
+    public void setPassword(String username){
+        this.password = username;
     }
-    public String getUsername(){
-        return username;
+    public String getPassword(){
+        return password;
     }
 
     public void setId(Long id){

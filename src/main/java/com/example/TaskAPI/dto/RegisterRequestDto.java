@@ -1,20 +1,18 @@
 package com.example.TaskAPI.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class RegisterRequestDto {
 
-    private String username;
+    @NotBlank(message = "Email Address cannot be blank")
     private String userEmail;
+    @Size(message ="Password must be 10 Characters or more")
     private String password;
 
     public RegisterRequestDto(){
 
-    }
-
-    public void setUsername(String username){
-        this.username = username;
-    }
-    public String getUsername(){
-        return username;
     }
     public void setUserEmail(String email){
         this.userEmail =  email;
@@ -25,6 +23,8 @@ public class RegisterRequestDto {
     public void setPassword(String password){
         this.password = password;
     }
-
+    public String getPassword(){
+        return password;
+    }
 
 }
