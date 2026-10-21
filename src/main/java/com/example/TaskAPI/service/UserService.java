@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public RegisterResponseDto registerUser(RegisterRequestDto registerRequestDto){
-        if(userRepository.existsByEmail(registerRequestDto.getUserEmail())){
+        if(userRepository.existsByUserEmail(registerRequestDto.getUserEmail())){
             throw new UserAlreadyExistException(registerRequestDto.getUserEmail());
         }
         User newUser = new User();

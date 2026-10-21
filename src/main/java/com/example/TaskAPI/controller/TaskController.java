@@ -35,13 +35,13 @@ public class TaskController {
     }
 
    @GetMapping("/api/tasks/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable UUID id){
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id){
         Task task = taskService.getTaskById(id);
         return ResponseEntity.status(HttpStatus.OK).body(task);
    }
 
    @PutMapping("/api/tasks/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable UUID id, @Valid  @RequestBody TaskRequest taskRequest){
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @Valid  @RequestBody TaskRequest taskRequest){
 
         Task updatedTask = taskService.updateTask(id, taskRequest);
         return ResponseEntity.status(HttpStatus.OK).body(updatedTask);
@@ -54,7 +54,7 @@ public class TaskController {
    }*/
 
    @DeleteMapping("/api/tasks/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable UUID id){
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id){
 
         taskService.deleteTask(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
